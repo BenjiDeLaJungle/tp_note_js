@@ -3,7 +3,6 @@ const app = express()
 const PORT = process.env.PORT || 5000 // this is very important
 function creer_article(){
 	console.log("test")
-	app.send('test')
 }
 
 
