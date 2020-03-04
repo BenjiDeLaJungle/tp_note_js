@@ -15,7 +15,8 @@ app.get('/tg', function (req, res) {
 })
 
 app.get('/creer', function (req, res) {
-  res.send(creer_article())
+  res.send()
+  creer_article()
 })
 
 app.get('/liste', function (req, res) {
