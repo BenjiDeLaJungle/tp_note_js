@@ -20,7 +20,7 @@ app.get('/creer', function (req, res) {
 })
 
 app.get('/liste', function (req, res) {
-  res.lister_article()
+  res.send(req)
 })
 
 app.listen(PORT, function () {
