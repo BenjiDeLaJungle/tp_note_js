@@ -2,7 +2,8 @@ const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 5000 // this is very important
 function creer_article(){
-
+	console.log("test")
+	app.send('test')
 }
 
 
@@ -15,8 +16,7 @@ app.get('/tg', function (req, res) {
 })
 
 app.get('/creer', function (req, res) {
-  res.send(req)
-
+  res.send(creer_article())
 })
 
 app.get('/liste', function (req, res) {
