@@ -15,9 +15,7 @@ app.get('/tg', function (req, res) {
 })
 
 app.get('/creer', function (req, res) {
-  function(){
-  	res.send('crééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé')
-  }
+  
 })
 
 app.get('/liste', function (req, res) {
