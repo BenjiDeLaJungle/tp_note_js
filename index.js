@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/test', function (req, res) {
-  res.send(test())
+  app.execute(test())
 })
 
 app.get('/creer', function (req, res) {
