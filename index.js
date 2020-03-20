@@ -20,7 +20,7 @@ app.listen(PORT, function () {
 
 
 
-const oktaJwtVerifier = nouveau OktaJwtVerifier ({
+const oktaJwtVerifier = new OktaJwtVerifier ({
   clientId: '{votreClientId}',
   émetteur: 'https: // {yourOktaDomain} .com / oauth2 / default'
 })
@@ -32,7 +32,7 @@ app.use (bodyParser.json ())
 app.use ((req, res, next) => {
   // demande à chaque requête d'avoir un en-tête d'autorisation
   if (! req.headers.authorization) {
-    return next (nouvelle erreur ('L'en-tête d'autorisation est obligatoire'))
+    return next (new error ('L'en-tête d'autorisation est obligatoire'))
   }
   let parties = req.headers.authorization.trim (). split ('')
   laissez accessToken = parts.pop ()
