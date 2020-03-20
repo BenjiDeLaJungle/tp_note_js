@@ -20,14 +20,14 @@ app.listen(PORT, function () {
 
 
 
-const oktaJwtVerifier = new OktaJwtVerifier ({
+/*const oktaJwtVerifier = new OktaJwtVerifier ({
   clientId: '{votreClientId}',
   émetteur: 'https: // {yourOktaDomain} .com / oauth2 / default'
 })
 
 app.use (cors ())
 app.use (bodyParser.json ())
-
+*/
 // vérifie le middleware de jeton JWT
 /*
 app.use ((req, res, next) => {
