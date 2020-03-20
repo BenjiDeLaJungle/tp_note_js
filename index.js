@@ -29,6 +29,7 @@ app.use (cors ())
 app.use (bodyParser.json ())
 
 // vérifie le middleware de jeton JWT
+/*
 app.use ((req, res, next) => {
   // demande à chaque requête d'avoir un en-tête d'autorisation
   if (! req.headers.authorization) {
@@ -46,4 +47,5 @@ app.use ((req, res, next) => {
     })
     .catch (suivant) // jwt n'a pas vérifié!
 })
+*/
 
