@@ -31,7 +31,7 @@ const jwtStrategy = new JwtStrategy(jwtOptions, function(payload, next) {
 
 const configuration={
 	'cache-control': 'no-cache',
-	'x-apikey': '5e778babf96f9f072a0b07f5',
+	'x-apikey': 'd656debfa8368f27079ad50d8deca4fb000fb',
 	'content-type': 'application/json',
 	
 }
@@ -47,9 +47,7 @@ app.get('/', (req, res) => {
 
 app.get('/get/:id', (req, res) => {
   axios
-  	.get('https://tpnote-0174.restdb.io/rest/articles/'+req.params.id,
-  	{headers: configuration},
-  	)
+  	.get('https://tpnote-0174.restdb.io/rest/articles/'+req.params.id)
   	.then(response => res.send(response.data))
   	.catch(console.log)
 })
