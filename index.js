@@ -68,7 +68,7 @@ app.get("/get/:id", function (req, res) {
 app.get("/getAll", function (req, res) {
     axios({
         method: 'GET',
-  		url: 'https://tpnote-0174.restdb.io/rest/articles/',
+  		url: 'https://tpnote-0174.restdb.io/rest/articles',
   		headers: 
    			{ 'cache-control': 'no-cache',
      		'x-apikey': 'd656debfa8368f27079ad50d8deca4fb000fb' 
