@@ -37,12 +37,12 @@ app.get('/public', (req, res) => {
   res.send('I am public folks!')
 })
 
-app.get('/get', (req, res) => {
-  res.send('I am public folks!')
+app.get('/get/:id', (req, res) => {
+  res.send('I am public get folks!' +req.params.id)
 })
 
 app.get('/getAll', (req, res) => {
-  res.send('I am public folks!')
+  res.send('I am public getAll folks!')
 })
 
 app.get('/create', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -64,7 +64,6 @@ app.get('/private', passport.authenticate('jwt', { session: false }), (req, res)
 app.post('/register', urlEncodedParser, function(req, res) {
   const email = req.body.email
   const password = req.body.password
-  res.send(email)
 })
 
 app.post('/login', urlEncodedParser, (req, res) => {
