@@ -5,7 +5,7 @@ const passport = require('passport')
 const passportJWT = require('passport-jwt')
 const secret = 'thisismysecret'
 const urlEncodedParser = bodyParser.urlencoded({ extended: false })
-
+const axios =require('axios')
 const PORT = process.env.PORT || 5000
 
 const users = [{ email: 'admin@admin.tp', password: 'azertyuiop' }]
