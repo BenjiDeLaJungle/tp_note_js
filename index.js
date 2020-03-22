@@ -45,12 +45,25 @@ app.get('/', (req, res) => {
   res.send('I am public root folks!')
 })
 
-app.get('/get/:id', (req, res) => {
-  axios
-  	.get('https://tpnote-0174.restdb.io/rest/articles/'+req.params.id)
-  	.then(response => res.send(response.data))
-  	.catch(console.log)
-})
+app.get("/get/:id", function (req, res) {
+    axios({
+        method: 'GET',
+  		url: 'https://tpnote-0174.restdb.io/rest/articles',
+  		headers: 
+   			{ 'cache-control': 'no-cache',
+     		'x-apikey': 'd656debfa8368f27079ad50d8deca4fb000fb' } };
+        })
+        .then(response => {
+            res.json(response.data);
+        })
+        .catch(error => {
+            res.status(401).json({
+                error: ${error}
+            })
+        })
+    })
+
+
 
 app.get('/getAll', (req, res) => {
 //  axios
