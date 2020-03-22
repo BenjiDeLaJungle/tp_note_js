@@ -37,14 +37,34 @@ app.get('/public', (req, res) => {
   res.send('I am public folks!')
 })
 
-app.get('/private', passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.send('Hello ' + req.user.email)
+app.get('/get', (req, res) => {
+  res.send('I am public folks!')
 })
 
-app.get('/form', urlEncodedParser, function(req, res) {
-  console.log("form")
-  console.log(req.body)
-  res.send('form')
+app.get('/getAll', (req, res) => {
+  res.send('I am public folks!')
+})
+
+app.get('/create', passport.authenticate('jwt', { session: false }), (req, res) => {
+  res.send('Hello create' + req.user.email)
+})
+
+app.get('/update', passport.authenticate('jwt', { session: false }), (req, res) => {
+  res.send('Hello update ' + req.user.email)
+})
+
+app.get('/delete', passport.authenticate('jwt', { session: false }), (req, res) => {
+  res.send('Hello delete' + req.user.email)
+})
+
+app.get('/private', passport.authenticate('jwt', { session: false }), (req, res) => {
+  res.send('Hello private' + req.user.email)
+})
+
+app.post('/register', urlEncodedParser, function(req, res) {
+  const email = req.body.email
+  const password = req.body.password
+  res.send(email)
 })
 
 app.post('/login', urlEncodedParser, (req, res) => {
