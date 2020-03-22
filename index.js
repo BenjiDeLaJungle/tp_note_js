@@ -29,6 +29,13 @@ const jwtStrategy = new JwtStrategy(jwtOptions, function(payload, next) {
   }
 })
 
+const configuration={
+	'cache-control': 'no-cache',
+	'x-apikey': 'd656debfa8368f27079ad50d8deca4fb000fb',
+	'content-type': 'application/json',
+	'ObjectID': '5df8db1291eb7c5a0001196b',
+}
+
 passport.use(jwtStrategy)
 
 const app = express()
