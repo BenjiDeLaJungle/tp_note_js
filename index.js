@@ -39,11 +39,17 @@ app.get('/', (req, res) => {
 })
 
 app.get('/get/:id', (req, res) => {
-  res.send('I am public get folks!' +req.params.id)
+  axios
+  	.get('https://tpnote-0174.restdb.io/rest/articles/'+req.params.id,
+  	{headers: configuration},
+  	)
+  	.then(response => res.send(response.data))
+  	.catch(console.log)
 })
 
 app.get('/getAll', (req, res) => {
-  res.send('I am public getAll folks!')
+//  axios
+//  	.get('https://tpnote-0174.restdb.io/rest/articles')
 })
 
 app.get('/create', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -69,7 +75,6 @@ app.post('/register', urlEncodedParser, function(req, res) {
 
 app.post('/login', urlEncodedParser, (req, res) => {
 
-	console.log(req.body)
   const email = req.body.email
   const password = req.body.password
 
