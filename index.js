@@ -148,7 +148,7 @@ app.post('/update', passport.authenticate('jwt', { session: false }), (req, res)
 app.get('/delete', passport.authenticate('jwt', { session: false }), (req, res) => {
 
 	axios({
-		{ method: 'DELETE',
+		method: 'DELETE',
   		url: 'https://tpnote-0174.restdb.io/rest/articles/(ObjectID)',
  		 headers: 
    			{ 'cache-control': 'no-cache',
