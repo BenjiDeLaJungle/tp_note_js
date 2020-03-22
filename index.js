@@ -59,7 +59,7 @@ app.get("/get/:id", function (req, res) {
     })
     .catch(error => {
         res.status(401).json({
-            error: ${error}
+            error: {error}
         });
     });
 })
