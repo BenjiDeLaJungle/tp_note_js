@@ -32,9 +32,10 @@ const jwtStrategy = new JwtStrategy(jwtOptions, function(payload, next) {
 passport.use(jwtStrategy)
 
 const app = express()
+app.use(bodyParser.json())
 
-app.get('/public', (req, res) => {
-  res.send('I am public folks!')
+app.get('/', (req, res) => {
+  res.send('I am public root folks!')
 })
 
 app.get('/get/:id', (req, res) => {
@@ -67,6 +68,8 @@ app.post('/register', urlEncodedParser, function(req, res) {
 })
 
 app.post('/login', urlEncodedParser, (req, res) => {
+
+	console.log(req.body)
   const email = req.body.email
   const password = req.body.password
 
