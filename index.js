@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
 app.get("/get/:id", function (req, res) {
     axios({
         method: 'GET',
-  		url: 'https://tpnote-0174.restdb.io/rest/articles?q={"id":"'+req.params.id+'"}',
+  		url: 'https://tpnote-0174.restdb.io/rest/articles/('+req.params.id+')',
   		headers: 
    			{ 'cache-control': 'no-cache',
      		'x-apikey': 'd656debfa8368f27079ad50d8deca4fb000fb' 
@@ -88,35 +88,61 @@ app.get("/getAll", function (req, res) {
 
 app.post('/create'/*, passport.authenticate('jwt', { session: false })*/, function(req, res) {
 axios({
-	method: 'POST',
-  	url: 'https://tpnote-0174.restdb.io/rest/articles',
-  	headers: 
-   		{ 'cache-control': 'no-cache',
-     	'x-apikey': 'd656debfa8368f27079ad50d8deca4fb000fb',
-     	'content-type': 'application/json' },
-  	data:{
-  		nom_article: req.body.nom_article,
-  		contenu: req.body.contenu,
-  		date_publication: req.body.date_publication,
-  		id_auteur: req.body.id_auteur
-  	},
-  	responseType:'json',
-  })
-    .then(response => {
-        res.json(response.data);
-    })
-    .catch(error => {
-        res.status(401).json({
-            error: {error}
+            method: "POST",
+            url: "https://tpnote-0174.restdb.io/rest/articles",
+            headers: {
+                'cache-control': 'no-cache',
+     			'x-apikey': 'd656debfa8368f27079ad50d8deca4fb000fb',
+     			'content-type': 'application/json'
+            },
+            data: {
+                nom_article: req.body.nom_article, 
+  				contenu: req.body.contenu, 
+  				date_publication: req.body.date_publication, 
+  				id_auteur_article: req.body.id_auteur_article
+            },
+            responseType: "json"
+        })
+        .then(response => {
+            res.json({
+                response: "success"
+            });
+        })
+        .catch(error => {
+            res.status(401).json({
+                error: {error}
+            });
         });
-    });
-})
+    })
 
 
-
-app.get('/update', passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.send('Hello update ' + req.user.email)
-})
+app.post('/update', passport.authenticate('jwt', { session: false }), (req, res) => {
+	axios({
+		method: 'PUT',
+  		url: 'https://tpnote-0174.restdb.io/rest/articles/',
+ 		headers: 
+   			{ 'cache-control': 'no-cache',
+     		'x-apikey': 'd656debfa8368f27079ad50d8deca4fb000fb',
+     		'content-type': 'application/json' },
+  		data: {
+                nom_article: req.body.nom_article, 
+  				contenu: req.body.contenu, 
+  				date_publication: req.body.date_publication, 
+  				id_auteur_article: req.body.id_auteur_article
+            },
+            responseType: "json"
+		})
+        .then(response => {
+            res.json({
+                response: "success"
+            });
+        })
+        .catch(error => {
+            res.status(401).json({
+                error: {error}
+            });
+        });
+    })
 
 app.get('/delete', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.send('Hello delete' + req.user.email)
