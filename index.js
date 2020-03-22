@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
 app.get("/get/:id", function (req, res) {
     axios({
         method: 'GET',
-  		url: 'https://tpnote-0174.restdb.io/rest/articles',
+  		url: 'https://tpnote-0174.restdb.io/rest/articles/'+req.params.id,
   		headers: 
    			{ 'cache-control': 'no-cache',
      		'x-apikey': 'd656debfa8368f27079ad50d8deca4fb000fb' 
@@ -65,9 +65,23 @@ app.get("/get/:id", function (req, res) {
 })
 
 
-app.get('/getAll', (req, res) => {
-//  axios
-//  	.get('https://tpnote-0174.restdb.io/rest/articles')
+app.get("/getAll", function (req, res) {
+    axios({
+        method: 'GET',
+  		url: 'https://tpnote-0174.restdb.io/rest/articles/',
+  		headers: 
+   			{ 'cache-control': 'no-cache',
+     		'x-apikey': 'd656debfa8368f27079ad50d8deca4fb000fb' 
+     		}
+        })
+    .then(response => {
+        res.json(response.data);
+    })
+    .catch(error => {
+        res.status(401).json({
+            error: {error}
+        });
+    });
 })
 
 app.get('/create', passport.authenticate('jwt', { session: false }), (req, res) => {
