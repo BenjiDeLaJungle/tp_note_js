@@ -86,7 +86,7 @@ app.get("/getAll", function (req, res) {
     });
 })
 
-app.post('/create'/*, passport.authenticate('jwt', { session: false })*/, function(req, res) {
+app.post('/create', passport.authenticate('jwt', { session: false }), (req, res) =>{
 axios({
             method: "POST",
             url: "https://tpnote-0174.restdb.io/rest/articles",
@@ -144,9 +144,31 @@ app.post('/update', passport.authenticate('jwt', { session: false }), (req, res)
         });
     })
 
+
 app.get('/delete', passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.send('Hello delete' + req.user.email)
-})
+
+	axios({
+		{ method: 'DELETE',
+  		url: 'https://tpnote-0174.restdb.io/rest/articles/(ObjectID)',
+ 		 headers: 
+   			{ 'cache-control': 'no-cache',
+     		'x-apikey': 'd656debfa8368f27079ad50d8deca4fb000fb',
+     		'content-type': 'application/json' },
+        responseType: "json"
+		})
+        .then(response => {
+            res.json({
+                response: "success"
+            });
+        })
+        .catch(error => {
+            res.status(401).json({
+                error: {error}
+            });
+        });
+    })
+  
+
 
 app.get('/private', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.send('Hello private' + req.user.email)
@@ -155,6 +177,8 @@ app.get('/private', passport.authenticate('jwt', { session: false }), (req, res)
 app.post('/register', urlEncodedParser, function(req, res) {
   const email = req.body.email
   const password = req.body.password
+
+  
 })
 
 app.post('/login', urlEncodedParser, (req, res) => {
