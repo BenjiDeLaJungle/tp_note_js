@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
 app.get("/get/:id", function (req, res) {
     axios({
         method: 'GET',
-  		url: 'https://tpnote-0174.restdb.io/rest/articles?q={"id":"'+req.params.id'"}',
+  		url: 'https://tpnote-0174.restdb.io/rest/articles?q={"id":"'+req.params.id+'"}',
   		headers: 
    			{ 'cache-control': 'no-cache',
      		'x-apikey': 'd656debfa8368f27079ad50d8deca4fb000fb' 
