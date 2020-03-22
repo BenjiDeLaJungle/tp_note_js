@@ -46,6 +46,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/get/:id', (req, res) => {
+	console.log(id)
   axios
   	.get('https://tpnote-0174.restdb.io/rest/articles/'+req.params.id,
   	{headers: configuration},
