@@ -6,6 +6,7 @@ const passportJWT = require('passport-jwt')
 const secret = 'thisismysecret'
 const urlEncodedParser = bodyParser.urlencoded({ extended: false })
 const axios =require('axios')
+const cors= require('cors')
 const PORT = process.env.PORT || 5000
 
 const users = [{ email: 'admin@admin.tp', password: 'azertyuiop' }]
@@ -84,9 +85,33 @@ app.get("/getAll", function (req, res) {
     });
 })
 
-app.get('/create', passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.send('Hello create' + req.user.email)
+app.post('/create'/*, passport.authenticate('jwt', { session: false })*/, function(req, res) {
+axios({
+	method: 'POST',
+  	url: 'https://tpnote-0174.restdb.io/rest/articles',
+  	headers: 
+   		{ 'cache-control': 'no-cache',
+     	'x-apikey': 'd656debfa8368f27079ad50d8deca4fb000fb',
+     	'content-type': 'application/json' },
+  	data:{
+  		nom_article: req.body.nom_article,
+  		contenu: req.body.contenu,
+  		date_publication: req.body.date_publication,
+  		id_auteur: req.body.id_auteur
+  	},
+  	responseType:'json',
+  })
+    .then(response => {
+        res.json(response.data);
+    })
+    .catch(error => {
+        res.status(401).json({
+            error: {error}
+        });
+    });
 })
+
+
 
 app.get('/update', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.send('Hello update ' + req.user.email)
