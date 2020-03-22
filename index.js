@@ -10,13 +10,16 @@ app.get('/', function(req, res) {
 })
 
 app.get('/form', urlEncodedParser, function(req, res) {
+  console.log("form")
   console.log(req.body)
   res.send('form')
+  res.send('form2')
 })
 
 app.listen(PORT, function () {
   console.log('Example app listening on port ' + PORT)
 })
+
 
 /*const oktaJwtVerifier = new OktaJwtVerifier ({
   clientId: '{votreClientId}',
