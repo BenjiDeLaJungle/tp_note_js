@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const urlEncodedParser = bodyParser.urlencoded({ extended: false })
 
+const PORT = process.env.PORT || 5000
 const app = express()
 
 app.get('/', function(req, res) {
@@ -13,10 +14,9 @@ app.post('/form', urlEncodedParser, function(req, res) {
   res.send('form')
 })
 
-app.listen(3000, function() {
-  console.log('Example app listening on port 3000!')
+app.listen(PORT, function () {
+  console.log('Example app listening on port ' + PORT)
 })
-
 
 /*const oktaJwtVerifier = new OktaJwtVerifier ({
   clientId: '{votreClientId}',
