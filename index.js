@@ -9,7 +9,7 @@ app.get('/', function(req, res) {
   res.send('Hello world !')
 })
 
-app.post('/form', urlEncodedParser, function(req, res) {
+app.get('/form', urlEncodedParser, function(req, res) {
   console.log(req.body)
   res.send('form')
 })
